@@ -1,0 +1,176 @@
+#VRML_SIM R2021b utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.941436880508439 -0.3349810359852776 -0.03852668618982872 0.3524597996037962
+  position -0.032139963775409286 0.4314901843319138 1.3807006175975989
+  followType "None"
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 2 2
+}
+DEF DiffDriveRobotWithEyes Robot {
+  children [
+    DEF BodyShapeWithTransform Transform {
+      translation 0 0.0665 0
+      children [
+        DEF Body Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    DEF wheel_joint HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.045 0.025 0
+      }
+      device [
+        PositionSensor {
+          name "leftEncoder"
+        }
+        RotationalMotor {
+          name "motor_1"
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 0.025 0
+        rotation 1.9633974819787822e-15 -6.754087338007011e-15 1 1.5699999999999619
+        children [
+          DEF shape_wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 1
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE shape_wheel
+        physics DEF wheel_physics Physics {
+        }
+      }
+    }
+    DEF wheel_joint HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.045 0.025 0
+      }
+      device [
+        PositionSensor {
+          name "rightEncoder"
+        }
+        RotationalMotor {
+          name "motor_2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 0.025 0
+        rotation -5.497512949540586e-16 -2.670220575491141e-15 1 1.5699999999999636
+        children [
+          DEF shape_wheel Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 1
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE shape_wheel
+        physics USE wheel_physics
+      }
+    }
+    DEF eye_solid Solid {
+      translation 0.015 0.07 0.045
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "eye_left"
+    }
+    DEF eye_solid Solid {
+      translation -0.015 0.07 0.045
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "eye_right"
+    }
+    DEF Gps GPS {
+      translation 0 0.105 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+    }
+    DEF Imu InertialUnit {
+      translation 0 0.105 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+    }
+    Receiver {
+      channel 1
+    }
+    Emitter {
+      channel 2
+    }
+    Accelerometer {
+      translation 0 -0.025 0
+      name "accel"
+    }
+    Gyro {
+    }
+  ]
+  boundingObject USE BodyShapeWithTransform
+  physics Physics {
+    density -1
+    mass 1
+  }
+  controller "LQR"
+}
