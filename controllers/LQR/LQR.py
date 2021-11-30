@@ -87,8 +87,8 @@ rDisRef = rEnc.getValue()
 stop = False
 xD = 0
 
-path = [[0.25,0.],[0.25,0.25]]
-
+path = [[0.125,0.],[0.125,0.125]]
+path = [(-1.125, -1.125), (-0.875, -0.875), (-0.625, -0.625), (-0.375, -0.375), (-0.125, -0.125), (-0.125, 0.125), (-0.125, 0.375), (0.125, 0.625), (0.375, 0.875), (0.625, 1.125), (0.875, 1.125), (1.125, 1.125), (1.375, 1.375)]
 theta_setpoint = None
 setpoint = None
 
@@ -147,7 +147,9 @@ while robot.step(timestep) != -1:
 			theta_setpoint = atan2((path[0][0] - round(x_pos,2)), (path[0][1] - round(z_pos,2)))
 			setpoint = path[0]
 	except IndexError:
-		stop = True
+		setpoint = (z_pos, x_pos)
+		theta_setpoint = yaw
+		# stop = True
 	print(yaw, theta_setpoint, setpoint)
 	if not stop and abs(theta_setpoint - yaw) > 0.005:	# for clockwise
 		print("turn, dont travel")
@@ -172,6 +174,7 @@ while robot.step(timestep) != -1:
 			stop = False
 		except IndexError:
 			# stop = True
+			# print("Falling..............")
+			setSpeed(speed, speed)
 			continue
-		setSpeed(speed,speed)
-    
+		# setSpeed(speed,speed)    
