@@ -3,21 +3,110 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.941436880508439 -0.3349810359852776 -0.03852668618982872 0.3524597996037962
-  position -0.032139963775409286 0.4314901843319138 1.3807006175975989
-  followType "None"
+  orientation -0.35080068679819378 -0.903171124582505 -0.29902121830453876 1.66314778904074
+  position -2.67438143304056 1.882223242162395 -0.6345773505503721
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
-  floorSize 2 2
+  floorSize 3 3
+}
+Solid {
+  translation -0.25 0 -0.75
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.35 0.25 0.35
+      }
+    }
+  ]
+}
+Solid {
+  translation -0.75 0 -0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.35 0.25 0.35
+      }
+    }
+  ]
+  name "solid(2)"
+}
+Solid {
+  translation 0.25 0 0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.35 0.25 0.35
+      }
+    }
+  ]
+  name "solid(4)"
+}
+Solid {
+  translation 0.75 0 0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.35 0.25 0.35
+      }
+    }
+  ]
+  name "solid(5)"
+}
+Solid {
+  translation 1.25 0 -0.75
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.35 0.25 0.35
+      }
+    }
+  ]
+  name "solid(6)"
+}
+Solid {
+  translation -0.35 0 1.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.35 0.25 0.35
+      }
+    }
+  ]
+  name "solid(7)"
+}
+Solid {
+  translation -1 0 0.75
+  children [
+    Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.35 0.25 0.35
+      }
+    }
+  ]
+  name "solid(8)"
 }
 DEF DiffDriveRobotWithEyes Robot {
   children [
     DEF BodyShapeWithTransform Transform {
-      translation 0 0.0665 0
+      translation -1.28 0.0665 -1.28
       children [
         DEF Body Shape {
           appearance PBRAppearance {
@@ -34,7 +123,7 @@ DEF DiffDriveRobotWithEyes Robot {
     }
     DEF wheel_joint HingeJoint {
       jointParameters HingeJointParameters {
-        anchor -0.045 0.025 0
+        anchor -1.325 0.025 -1.28
       }
       device [
         PositionSensor {
@@ -45,7 +134,7 @@ DEF DiffDriveRobotWithEyes Robot {
         }
       ]
       endPoint Solid {
-        translation -0.045 0.025 0
+        translation -1.325 0.025 -1.28
         rotation 1.9633974819787822e-15 -6.754087338007011e-15 1 1.5699999999999619
         children [
           DEF shape_wheel Shape {
@@ -67,7 +156,7 @@ DEF DiffDriveRobotWithEyes Robot {
     }
     DEF wheel_joint HingeJoint {
       jointParameters HingeJointParameters {
-        anchor 0.045 0.025 0
+        anchor -1.235 0.025 -1.28
       }
       device [
         PositionSensor {
@@ -78,7 +167,7 @@ DEF DiffDriveRobotWithEyes Robot {
         }
       ]
       endPoint Solid {
-        translation 0.045 0.025 0
+        translation -1.235 0.025 -1.28
         rotation -5.497512949540586e-16 -2.670220575491141e-15 1 1.5699999999999636
         children [
           DEF shape_wheel Shape {
@@ -99,7 +188,7 @@ DEF DiffDriveRobotWithEyes Robot {
       }
     }
     DEF eye_solid Solid {
-      translation 0.015 0.07 0.045
+      translation -1.265 0.07 -1.235
       children [
         Shape {
           appearance PBRAppearance {
@@ -115,7 +204,7 @@ DEF DiffDriveRobotWithEyes Robot {
       name "eye_left"
     }
     DEF eye_solid Solid {
-      translation -0.015 0.07 0.045
+      translation -1.295 0.07 -1.235
       children [
         Shape {
           appearance PBRAppearance {
@@ -131,7 +220,7 @@ DEF DiffDriveRobotWithEyes Robot {
       name "eye_right"
     }
     DEF Gps GPS {
-      translation 0 0.105 0
+      translation -1.28 0.105 -1.28
       children [
         Shape {
           appearance PBRAppearance {
@@ -143,7 +232,7 @@ DEF DiffDriveRobotWithEyes Robot {
       ]
     }
     DEF Imu InertialUnit {
-      translation 0 0.105 0
+      translation -1.28 0.105 -1.28
       children [
         Shape {
           appearance PBRAppearance {
