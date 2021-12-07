@@ -3,7 +3,7 @@ Developing software for a self balancing two wheeled differential drive robot. S
 
 ### Tasks:
 
-1. [DONE] LQR Controller
-2. Path Planner
+1. [x] LQR Controller
+2. [x] Path Planner (A*)
 3. RL Controller
 
