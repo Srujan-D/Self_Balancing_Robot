@@ -7,3 +7,6 @@ Developing software for a self balancing two wheeled differential drive robot. S
 2. [x] Path Planner (A*)
 3. [ ] RL Controller
 
+### Report:
+
+The project report can be accessed [here](https://srujan-d.github.io/uploads/AMR_Course_Project_Report.pdf).
