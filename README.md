@@ -10,3 +10,4 @@ Developing software for a self balancing two wheeled differential drive robot. S
 ### Report:
 
 The project report can be accessed [here](https://srujan-d.github.io/uploads/AMR_Course_Project_Report.pdf).
+A video of the simulation can be seen [here](https://youtu.be/uNKNm0YkWVY).
